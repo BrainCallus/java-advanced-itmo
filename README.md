@@ -236,16 +236,6 @@ public interface ParallelMapper extends AutoCloseable {
    * При наличии `ParallelMapper` сам `IterativeParallelism` новые потоки создавать не должен.
 3. При выполнении все ещё **нельзя** использовать _Concurrency Utilities_
 
-Тестирование
-
- * простой вариант:
-    ```info.kgeorgiy.java.advanced.mapper scalar <ParallelMapperImpl>,<IterativeParallelism>```
- * сложный вариант:
-    ```info.kgeorgiy.java.advanced.mapper list <ParallelMapperImpl>,<IterativeParallelism>```
-
-**Внимание! Между полными именами классов `ParallelMapperImpl` и `IterativeParallelism`
-должна быть запятая и не должно быть пробелов.**
-
 ### [ParallelMapper(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent/ParallelMapperImpl.java)
 
 
