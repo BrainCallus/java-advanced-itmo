@@ -73,7 +73,7 @@ Solutions for practical tasks from 4th semester java-advanced course
    * Если вы знакомы с другим тестовым фреймворком (например, [TestNG](https://testng.org/)), то можете использовать его.
 5. Приложение и тесты должны находится в пакете info.kgeorgiy.ja.*.i18n и его подпакетах.
    
-### [Решение](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/i18n)    
+### [i18n(statistcs)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/i18n)    
 
 ## Домашнее задание 12. HelloNonblockingUDP
 1. Реализуйте клиент и сервер, взаимодействующие по UDP, используя только неблокирующий ввод-вывод.
@@ -83,7 +83,7 @@ Solutions for practical tasks from 4th semester java-advanced course
 5. Обратите внимание на выделение общего кода старой и новой реализации.
 6. _Бонусный вариант_. Клиент и сервер могут перед началом работы выделить O(число потоков) памяти. Выделять дополнительную память во время работы запрещено.
 
-### [Решение](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/hello)
+### [hello-nonblocking](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/hello)
 
 ## Домашнее задание 11. Физические лица
 1. Добавьте к банковскому приложению возможность работы с физическими лицами.
@@ -114,7 +114,7 @@ Solutions for practical tasks from 4th semester java-advanced course
    5. Создайте скрипт, запускающий тесты с использованием стандартного подхода для вашего тестового фреймворка. Код возврата должен быть как в предыдущем пункте.
 6. Приложения и тесты должны находится в пакете `info.kgeorgiy.ja.*.bank` и его подпакетах.
 
-### [Решение](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/bank)
+### [Bank](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/bank)
 
 
 ## Домашнее задание 10. HelloUDP
@@ -137,7 +137,7 @@ Solutions for practical tasks from 4th semester java-advanced course
    * Ответом на запрос должно быть `Hello, <текст запроса>`.
    * Если сервер не успевает обрабатывать запросы, прием запросов может быть временно приостановлен.
 
-### [Решение](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/hello)
+### [hello](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/hello)
 
 
 ## Домашнее задание 9. Web Crawler
@@ -205,7 +205,7 @@ Solutions for practical tasks from 4th semester java-advanced course
    * _Бонусная_ — сделать параллельный обод в ширину.
 3. Задание подразумевает активное использование Concurrency Utilities, в частности, в решении не должно быть «велосипедов», аналогичных/легко сводящихся к классам из Concurrency Utilities.
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/crawler)
+### [WebCrawler(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/crawler)
 
 
 ## Домашнее задание 8. Параллельный запуск
@@ -246,7 +246,7 @@ public interface ParallelMapper extends AutoCloseable {
 **Внимание! Между полными именами классов `ParallelMapperImpl` и `IterativeParallelism`
 должна быть запятая и не должно быть пробелов.**
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent)
+### [ParallelMapper(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent/ParallelMapperImpl.java)
 
 
 ## Домашнее задание 7. Итеративный параллелизм
@@ -266,7 +266,7 @@ public interface ParallelMapper extends AutoCloseable {
 5. Не следует рассчитывать на то, что переданные компараторы, предикаты и функции работают быстро.
 6. При выполнении задания нельзя использовать _Concurrency Utilities_.
    
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent)
+### [IterativeParallelism(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent/IterativeParallelism.java)
 
 
 ## Домашнее задание 6. Javadoc
@@ -295,7 +295,7 @@ public interface ParallelMapper extends AutoCloseable {
 4. Данное домашнее задание сдается только вместе с предыдущим. Предыдущее домашнее задание отдельно сдать будет нельзя.
 5. **Сложная версия**. Решение должно быть модуляризовано.
 
-### [Решение(easy)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/jarimplementor)
+### [JarImplementor(easy)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/jarimplementor/Implementor.java)
 
 
 ## Домашнее задание 4. Implementor
@@ -311,7 +311,7 @@ public interface ParallelMapper extends AutoCloseable {
   * _Сложный_ — `Implementor` должен уметь реализовывать и классы и интерфейсы. Поддержка _generics_ не требуется.
   * _Бонусный_ — `Implementor` должен уметь реализовывать _generic_-классы и интерфейсы. Сгенерированный код должен иметь корректные параметры типов и не порождать `UncheckedWarning`.
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/implementor)
+### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/implementor/Implementor.java)
 
 
 ## Домашнее задание 3. Студенты
@@ -323,7 +323,7 @@ public interface ParallelMapper extends AutoCloseable {
   * Применение лямбда-выражений и потоков.
   * Избавление от повторяющегося кода.
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/student)
+### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/student/StudentDB.java)
 
 
 ## Домашнее задание 2. ArraySortedSet
@@ -335,7 +335,7 @@ public interface ParallelMapper extends AutoCloseable {
   * Применение стандартных коллекций.
   * Избавление от повторяющегося кода.
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/arrayset)
+### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/arrayset/ArraySet.java)
 
 
 ## Домашнее задание 1. Обход файлов
