@@ -1,0 +1,36 @@
+Analyzed file: C:\Users\chura\IdeaProjects\REPO\JavaAdvanced\solutions\java-advanced\samples\numbers.txt
+Summary statistic
+	Sentences statistic: 25
+	Words statistic: 259
+	Dates statistic: 0
+	Sums statistic: 0
+	Numbers statistic: 76
+Statistic of the Sentences
+	Amount of sentences: 25 (unique 25).
+	Minimal sentence : Пример 1..
+	Maximal sentence : А соответствующее определение для целых чисел получается обобщением (хотя, может быть, с точки зрения обыкновенного здравого смысла» удобнее считать в примере 2, что, откладывая в отрицательном направлении по 13, мы «шагнем» 154 раза и останется пройти еще 4 единицы, нежели что нужно пройти 155 раз, а затем вернуться на 9 единиц)..
+	Average sentence length: 79,24
+	Minimal sentence length: 9 ("Пример 1.").
+	Maximal sentence length: 332 ("А соответствующее определение для целых чисел получается обобщением (хотя, может быть, с точки зрения обыкновенного здравого смысла» удобнее считать в примере 2, что, откладывая в отрицательном направлении по 13, мы «шагнем» 154 раза и останется пройти еще 4 единицы, нежели что нужно пройти 155 раз, а затем вернуться на 9 единиц).").
+Statistic of the Words
+	Amount of words: 259 (unique 155).
+	Minimal word : b.
+	Maximal word : отрицательныхчисел.
+	Average word length: 5,444
+	Minimal word length: 1 ("b").
+	Maximal word length: 18 ("отрицательныхчисел").
+Statistic of the Dates
+	Amount of dates: 0 (unique 0).
+	Minimal date : -.
+	Maximal date : -.
+	Average date: 1970-01-01
+Statistic of the Sums
+	Amount of sum: 0 (unique 0).
+	Minimal amount : -.
+	Maximal amount : -.
+	Average amount: не число
+Statistic of the Numbers
+	Amount of numbers: 76 (unique 22).
+	Minimal number : -2 006,0.
+	Maximal number : 2 006,0.
+	Average number: 192,355

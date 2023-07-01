@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"info.kgeorgiy.java.advanced.crawler","l":"Crawler"},{"p":"info.kgeorgiy.ja.churakova.crawler","l":"WebCrawler.HostHandler"},{"p":"info.kgeorgiy.ja.churakova.crawler","l":"WebCrawler.Link"},{"p":"info.kgeorgiy.ja.churakova.crawler","l":"WebCrawler"}]

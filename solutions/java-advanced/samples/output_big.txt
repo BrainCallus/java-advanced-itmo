@@ -1,0 +1,36 @@
+Analyzed file: C:\Users\chura\IdeaProjects\REPO\JavaAdvanced\solutions\java-advanced\samples\big_text.txt
+Summary statistic
+	Sentences statistic: 73
+	Words statistic: 1057
+	Dates statistic: 0
+	Sums statistic: 0
+	Numbers statistic: 0
+Statistic of the Sentences
+	Amount of sentences: 73 (unique 73).
+	Minimal sentence : А потом.
+	Maximal sentence : Это было смутное, слепое состояние души, непонятное ему, как вообще всё было непонятно, от неба до желтого трамвая, гремевшего по раскату Гогенцоллерндама (по которому некогда Яша Чернышевский ехал на смерть), но постепенно досада на самого себя проходила, и с каким-то облегчением — точно ответственность за его душу принадлежала не ему, а кому-то знающему, в чем дело, — он чувствовал, что весь этот переплет случайных мыслей, как и всё прочее, швы и просветы весеннего дня, неровности воздуха, грубые, так и сяк скрещивающиеся нити неразборчивых звуков — не что иное как изнанка великолепной ткани, с постепенным ростом и оживлением невидимых ему образов на ее лицевой стороне..
+	Average sentence length: 97,466
+	Minimal sentence length: 7 ("А потом").
+	Maximal sentence length: 680 ("Это было смутное, слепое состояние души, непонятное ему, как вообще всё было непонятно, от неба до желтого трамвая, гремевшего по раскату Гогенцоллерндама (по которому некогда Яша Чернышевский ехал на смерть), но постепенно досада на самого себя проходила, и с каким-то облегчением — точно ответственность за его душу принадлежала не ему, а кому-то знающему, в чем дело, — он чувствовал, что весь этот переплет случайных мыслей, как и всё прочее, швы и просветы весеннего дня, неровности воздуха, грубые, так и сяк скрещивающиеся нити неразборчивых звуков — не что иное как изнанка великолепной ткани, с постепенным ростом и оживлением невидимых ему образов на ее лицевой стороне.").
+Statistic of the Words
+	Amount of words: 1057 (unique 751).
+	Minimal word : а.
+	Maximal word : чистильно-гладильной.
+	Average word length: 5,517
+	Minimal word length: 1 ("а").
+	Maximal word length: 20 ("чистильно-гладильной").
+Statistic of the Dates
+	Amount of dates: 0 (unique 0).
+	Minimal date : -.
+	Maximal date : -.
+	Average date: 1970-01-01
+Statistic of the Sums
+	Amount of sum: 0 (unique 0).
+	Minimal amount : -.
+	Maximal amount : -.
+	Average amount: не число
+Statistic of the Numbers
+	Amount of numbers: 0 (unique 0).
+	Minimal number : -.
+	Maximal number : -.
+	Average number: не число
