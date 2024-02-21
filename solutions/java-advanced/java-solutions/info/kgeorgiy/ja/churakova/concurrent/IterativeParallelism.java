@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class IterativeParallelism implements AdvancedIP {
-
     private final ParallelMapper parallelMapper;
 
 
@@ -256,4 +255,3 @@ public class IterativeParallelism implements AdvancedIP {
         }
     }
 }
-

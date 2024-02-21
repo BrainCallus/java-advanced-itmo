@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
  * @param <T> defines localization(remote or local)
  */
 public interface PersonsAccount<T> extends Account {
-
     /**
      * Returns passport of {@link Person} owns this account
      */

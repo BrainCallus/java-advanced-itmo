@@ -11,7 +11,6 @@ import java.rmi.RemoteException;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class LocalPerson extends AbstractPerson<Local<RemotePersonAccount>> implements Local<RemotePerson> {
-
     /**
      * Initialize local person with given passport, name and familyName
      *
@@ -32,7 +31,6 @@ public class LocalPerson extends AbstractPerson<Local<RemotePersonAccount>> impl
         super(remotePerson.getPassport(), remotePerson.getName(), remotePerson.getFamilyName());
         copyDataFromSample(remotePerson);
     }
-
 
     @Override
     protected Account createAccountImpl(String accountId) throws RemoteException {
@@ -61,7 +59,8 @@ public class LocalPerson extends AbstractPerson<Local<RemotePersonAccount>> impl
                 LocalPersonAccount newAc = new LocalPersonAccount(remAccount);
                 this.accounts.put(newAc.getSelfId(), newAc);
             } catch (RemoteException e) {
-                throw new BankException(String.format("Remote exception occur during creation LocalAccount %s%n%s", id, e.getMessage()));
+                throw new BankException(
+                        String.format("Remote exception occur during creation LocalAccount %s%n%s", id, e.getMessage()));
             }
         });
     }

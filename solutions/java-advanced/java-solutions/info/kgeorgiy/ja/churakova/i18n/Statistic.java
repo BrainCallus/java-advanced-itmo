@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import static info.kgeorgiy.ja.churakova.i18n.Utilits.getBundle;
 
 public class Statistic<T extends Comparable<T>> {
-
     private final StatType statType;
     private long entries;
     private long unique;
@@ -22,7 +21,6 @@ public class Statistic<T extends Comparable<T>> {
     private long minLen;
     private long maxLen;
 
-
     public Statistic(StatType statType) {
         this.statType = statType;
         this.entries = 0;
@@ -31,7 +29,6 @@ public class Statistic<T extends Comparable<T>> {
         this.minLen = 0;
         this.maxLen = 0;
     }
-
 
     public long getEntries() {
         return entries;
@@ -50,11 +47,11 @@ public class Statistic<T extends Comparable<T>> {
     }
 
     public double getAvg() {
-
         return avg;
     }
 
-    public T getAvg(boolean val) {
+    @SuppressWarnings("unchecked")
+    public T getAvgT() {
         if (this.statType != StatType.DATE) {
             throw new UnexpectedFormatException(String.format("%s statistic not support Date%n", statType()));
         }
@@ -115,47 +112,51 @@ public class Statistic<T extends Comparable<T>> {
         return report;
     }
 
-
     private String getBundleString(String... args) {
         return Arrays.stream(args).reduce("", String::concat);
     }
 
     private String addExtendedStat(ResourceBundle bundle) {
-        String addition = String.format("\t%s: %s%n", bundle.getString("AVG_" + statType),
-                statType == StatType.DATE ? valueToString(getAvg(true), bundle.getLocale()) : Utilits.defaultFormatNUMBER(getAvg(), bundle.getLocale()));
+        String addition = String.format(
+                "\t%s: %s%n",
+                bundle.getString("AVG_" + statType),
+                statType == StatType.DATE ?
+                        valueToString(getAvgT(), bundle.getLocale()) :
+                        Utilits.defaultFormatNUMBER(getAvg(), bundle.getLocale())
+        );
+
         if (minLen > 0) {
-            addition += String.format("\t%s: %s (\"%s\").%n\t%s: %s (\"%s\").%n",
+            addition += String.format(
+                    "\t%s: %s (\"%s\").%n\t%s: %s (\"%s\").%n",
                     bundle.getString("MIN_LEN_" + statType()), getMinLen(), getMin(),
-                    bundle.getString("MAX_LEN_" + statType()), getMaxLen(), getMax());
+                    bundle.getString("MAX_LEN_" + statType()), getMaxLen(), getMax()
+            );
         }
         return addition;
     }
-
 
     private String valueToString(T val, Locale locale) {
         if (val == null) {
             return "-";
         }
-        try {
 
+        try {
             Method format = Utilits.class.getDeclaredMethod("defaultFormat" + statType, val.getClass(), locale.getClass());
             format.setAccessible(true);
             return (String) format.invoke(Utilits.class, val, locale);
-
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             System.err.println(e.getMessage());
         }
+
         return "MALFORMED_DATA";
     }
 
     private String getMinMaxReport(Locale reportLoc, ResourceBundle bundle, String key, T val) {
-        return String.format("\t%s : %s.%n", bundle.getString(getBundleString(key, "_", statType())),
-                valueToString(val, reportLoc));
+        return String.format("\t%s : %s.%n",
+                bundle.getString(getBundleString(key, "_", statType())), valueToString(val, reportLoc));
     }
 
     private String statType() {
         return statType.toString();
     }
-
-
 }

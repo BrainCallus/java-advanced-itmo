@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 /**
  * Implementation of {@link PersonsAccount} that not remote
  */
-public class LocalPersonAccount extends AbstractPersonsAccount<Local<RemotePersonAccount>> implements Local<RemotePersonAccount>, Serializable {
-
+public class LocalPersonAccount extends AbstractPersonsAccount<Local<RemotePersonAccount>>
+        implements Local<RemotePersonAccount>, Serializable {
     /**
      * Default constructor. Initialize account with id and 0 balance
      *

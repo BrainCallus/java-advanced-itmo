@@ -10,7 +10,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class NumberCollector extends AbstractCollector<Double> {
-
     public NumberCollector() {
         super();
     }
@@ -44,6 +43,5 @@ public class NumberCollector extends AbstractCollector<Double> {
         } catch (NullPointerException nul) {
             return null;
         }
-
     }
 }

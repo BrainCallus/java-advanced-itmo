@@ -20,7 +20,6 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 public class BankApplicationImpl implements BankApplication {
-
     private static final String DEFAULT_HOST = "//localhost/bank";
     private static final int DEFAULT_PORT = 8888;
 
@@ -53,7 +52,6 @@ public class BankApplicationImpl implements BankApplication {
         bank = (Bank) LocateRegistry.getRegistry(DEFAULT_PORT).lookup(name);
     }
 
-
     /**
      * Changes balance on account for person with given parameters
      *
@@ -66,10 +64,8 @@ public class BankApplicationImpl implements BankApplication {
      */
     @Override
     public void changeBalance(String name, String familyName, String passport, String accountId, int delta) throws RemoteException {
-
         Person<MyRemote> person = getAndVerifyPerson(passport, name, familyName);
         changeBalanceOrThrow(getPersonsAccount(person, accountId), delta);
-
     }
 
     /**
@@ -83,8 +79,11 @@ public class BankApplicationImpl implements BankApplication {
      */
     @Override
     public void verifyPerson(String name, String familyName, String passport, Person<MyRemote> sample) throws RemoteException {
-        if (!(sample.getName().equals(name) && sample.getFamilyName().equals(familyName) && sample.getPassport().equals(passport))) {
-            throw new BankException("Attempt to illegal access detected: given person's information different to existing person. Person verification failed");
+        if (!(sample.getName().equals(name) &&
+                sample.getFamilyName().equals(familyName) &&
+                sample.getPassport().equals(passport))) {
+            throw new BankException("Attempt to illegal access detected: " +
+                    "given person's information different to existing person. Person verification failed");
         }
     }
 
@@ -143,6 +142,7 @@ public class BankApplicationImpl implements BankApplication {
         return account;
     }
 
+    @SuppressWarnings("unchecked")
     private Person<MyRemote> getAndVerifyPerson(String passport, String name, String familyName) throws RemoteException {
         Person<MyRemote> person = (Person<MyRemote>) bank.getPersonByPassport(passport, Localization.REMOTE);
         if (person == null) {
@@ -169,7 +169,7 @@ public class BankApplicationImpl implements BankApplication {
     private void executeByName(BankApplicationImpl that, String name, String familyName, String passport, String accountId, int delta, String methodName) {
         try {
             //Method method = that.getClass().getDeclaredMethod(methodName,String.class,String.class, String.class,String.class,int.class);
-            // that the same to commented part but more simple
+            // that is the same to commented part but simpler
             Method method = getByName(methodName);
             Objects.requireNonNull(method).setAccessible(true);
             method
@@ -207,7 +207,8 @@ public class BankApplicationImpl implements BankApplication {
                 case 6 -> {
                     if (mayBeReflect(args[5])) {
                         bankApplication = new BankApplicationImpl();
-                        bankApplication.executeByName(bankApplication, args[0], args[1], args[2], args[3], Integer.parseInt(args[4]), args[5]);
+                        bankApplication.executeByName(bankApplication, args[0], args[1], args[2], args[3],
+                                Integer.parseInt(args[4]), args[5]);
                     } else {
                         bankApplication = new BankApplicationImpl(args[0]);
                         bankApplication.changeBalance(args[1], args[2], args[3], args[4], Integer.parseInt(args[5]));
@@ -215,7 +216,8 @@ public class BankApplicationImpl implements BankApplication {
                 }
                 case 7 -> {
                     bankApplication = new BankApplicationImpl(args[0]);
-                    bankApplication.executeByName(bankApplication, args[1], args[2], args[3], args[4], Integer.parseInt(args[5]), args[6]);
+                    bankApplication.executeByName(bankApplication, args[1], args[2], args[3], args[4],
+                            Integer.parseInt(args[5]), args[6]);
                 }
             }
         } catch (RemoteException rem) {
@@ -230,7 +232,5 @@ public class BankApplicationImpl implements BankApplication {
         } catch (NumberFormatException num) {
             System.err.printf("Can't parse last argument %n%s%n", num.getMessage());
         }
-
     }
-
 }

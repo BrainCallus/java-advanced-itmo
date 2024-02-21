@@ -9,8 +9,11 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 public final class Client {
-    /** Utility class. */
-    private Client() {}
+    /**
+     * Utility class.
+     */
+    private Client() {
+    }
 
     public static void main(final String... args) throws RemoteException {
         final Bank bank;

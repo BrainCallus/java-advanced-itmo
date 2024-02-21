@@ -12,7 +12,6 @@ import java.rmi.RemoteException;
  * @param <T> defines localization
  */
 public class AbstractPersonsAccount<T> extends RemoteAccount implements PersonsAccount<T>, Serializable {
-
     private final String passport;
     private final String selfId;
 

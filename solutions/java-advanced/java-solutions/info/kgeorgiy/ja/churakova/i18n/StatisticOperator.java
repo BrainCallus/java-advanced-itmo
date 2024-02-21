@@ -18,17 +18,15 @@ import java.util.concurrent.ConcurrentMap;
 import static info.kgeorgiy.ja.churakova.i18n.Utilits.getBundle;
 
 public class StatisticOperator {
-
-    private final Map<StatType, StatCollector<?>> collectors = Map.of(
+    private static final Map<StatType, StatCollector<?>> collectors = Map.of(
             StatType.SENTENCE, new SentenceCollector(),
             StatType.WORD, new WordCollector(),
             StatType.NUMBER, new NumberCollector(),
             StatType.DATE, new DateCollector(),
             StatType.SUM, new SumCollector()
     );
-    ConcurrentMap<String, ConcurrentMap<StatType, Statistic<?>>> collected;
 
-    // TO_DO: parallel gathering !!!
+    ConcurrentMap<String, ConcurrentMap<StatType, Statistic<?>>> collected;
 
     public StatisticOperator() {
         collected = new ConcurrentHashMap<>();
@@ -75,14 +73,13 @@ public class StatisticOperator {
     private String getSummary(String file, ResourceBundle bundle) {
         StringBuilder summary = new StringBuilder(String.format("%s: %s%n%s%n",
                 bundle.getString("ANALYZED_FILE"), file, bundle.getString("SUMMARY_STATISTIC")));
-        collected.get(file).forEach((statType, statistic) -> {
-            summary.append(String.format("\t%s statistic: %d%n", bundle.getString(statType + "S"),
-                    statistic.getEntries()));
-        });
-
+        collected.get(file).forEach(
+                (statType, statistic) ->
+                        summary.append(
+                                String.format("\t%s statistic: %d%n", bundle.getString(statType + "S"), statistic.getEntries())
+                        ));
         return summary.toString();
     }
-
 
     private void checkFile(String inputFile) {
         if (collected.get(inputFile) == null) {

@@ -25,7 +25,6 @@ public class RemotePerson extends AbstractPerson<MyRemote> implements MyRemote {
         this.port = port;
     }
 
-
     @Override
     protected Account createAccountImpl(String accountId) throws RemoteException {
         final PersonsAccount<MyRemote> account = new RemotePersonAccount(passport + ":" + accountId);
@@ -45,12 +44,11 @@ public class RemotePerson extends AbstractPerson<MyRemote> implements MyRemote {
 
     /**
      * String representation of this remote person
+     *
      * @return string representation of this remote person
      */
     @Override
     public String stringView() {
         return String.join(" ", getName(), getFamilyName(), getPassport());
     }
-
-
 }

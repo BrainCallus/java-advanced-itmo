@@ -10,7 +10,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class SumCollector extends AbstractCollector<Double> {
-
     public SumCollector() {
         super();
     }
@@ -22,7 +21,6 @@ public class SumCollector extends AbstractCollector<Double> {
     protected int compare(Double first, Double second) {
         return first.compareTo(second);
     }
-
 
     @Override
     protected void updateExternal(Double newElement, Statistic<Double> statistic) {

@@ -2,8 +2,6 @@ package info.kgeorgiy.ja.churakova.arrayset;
 
 import java.util.*;
 
-// :NOTE: На момент проверки не проходит даже easy тесты (Г.Н., 10.03.22, 22:23 msk)
-
 public class ArraySet<E extends Comparable<E>> extends AbstractSet<E> implements NavigableSet<E> {
     private static final String UNSUPPORTED = "This set is immutable, pls do not try to modify it!";
 
@@ -36,9 +34,6 @@ public class ArraySet<E extends Comparable<E>> extends AbstractSet<E> implements
         this.comparator = comparator;
         this.setElements = set;
     }
-
-    // :NOTE: Создание ArraySet от SortedSet должно сохранять порядок элементов из SortedSet
-    // :NOTE: не исправлено
 
     private boolean verifyIndex(int index) {
         return index >= 0 && index < size();
@@ -106,7 +101,6 @@ public class ArraySet<E extends Comparable<E>> extends AbstractSet<E> implements
         };
     }
 
-    // :NOTE: descendingSet() не должен менять исходный set. В вашем случае -- меняет порядок элементов
     @Override
     public NavigableSet<E> descendingSet() {
         return new ArraySet<>(new DescendingList<>(setElements.listElements.stream().toList(), !setElements.isDesc), Collections.reverseOrder(comparator));
@@ -213,9 +207,6 @@ public class ArraySet<E extends Comparable<E>> extends AbstractSet<E> implements
         throw new UnsupportedOperationException(UNSUPPORTED);
     }
 
-    // :NOTE: следующие 6 методов не нужны
-
-
     private static class DescendingList<E> extends AbstractList<E> implements RandomAccess {
         private final List<E> listElements;
         private final boolean isDesc;
@@ -235,5 +226,4 @@ public class ArraySet<E extends Comparable<E>> extends AbstractSet<E> implements
             return isDesc ? listElements.get(size() - index - 1) : listElements.get(index);
         }
     }
-
 }

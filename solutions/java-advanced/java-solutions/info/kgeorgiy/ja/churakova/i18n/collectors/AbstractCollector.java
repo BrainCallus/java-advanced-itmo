@@ -11,7 +11,6 @@ public abstract class AbstractCollector<T extends Comparable<T>> implements Stat
     protected Locale locale;
     protected BreakIterator iterator;
     protected final StatType statType;
-
     private static final List<String> replaced = List.of("\n", "\t", "    ", "  ", ";", "!", "\"", "?");
 
     protected AbstractCollector() {
@@ -24,6 +23,13 @@ public abstract class AbstractCollector<T extends Comparable<T>> implements Stat
         statType = getStatType();
     }
 
+    protected abstract T parse(String input, String cur_word, int pos) throws UnexpectedFormatException;
+
+    protected abstract int compare(T first, T second);
+
+    protected abstract void updateExternal(T newElement, Statistic<T> statistic);
+
+    protected abstract void initBreakIterator(String text);
 
     @Override
     public Statistic<T> collectStatistics(Locale inputLoc, String input) {
@@ -61,7 +67,6 @@ public abstract class AbstractCollector<T extends Comparable<T>> implements Stat
         this.locale = newLocale;
     }
 
-
     private void updateStat(T newElement, Statistic<T> statistic) {
         if (statistic.getMin() == null) {
             statistic.setMin(newElement);
@@ -78,23 +83,11 @@ public abstract class AbstractCollector<T extends Comparable<T>> implements Stat
         return compare(first, second) < 0;
     }
 
-    protected abstract int compare(T first, T second);
-
-
     private String cutIgnoredCharacters(String cur_word) {
         return replaced.stream().reduce(cur_word.trim(), (word, sym) -> word.replace(sym, ""));
     }
 
-    protected abstract void updateExternal(T newElement, Statistic<T> statistic);
-
-    protected abstract void initBreakIterator(String text);
-
-    protected abstract T parse(String input, String cur_word, int pos) throws UnexpectedFormatException;
-
-
     private StatType getStatType() {
         return StatType.valueOf(this.getClass().getSimpleName().split("Collector")[0].toUpperCase());
     }
-
-
 }

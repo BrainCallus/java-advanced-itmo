@@ -32,5 +32,4 @@ public abstract class AbstractStringCollector extends AbstractCollector<String> 
         statistic.setMinLen(Objects.requireNonNullElse(statistic.getMin(), "").length());
         statistic.setMaxLen(Objects.requireNonNullElse(statistic.getMax(), "").length());
     }
-
 }

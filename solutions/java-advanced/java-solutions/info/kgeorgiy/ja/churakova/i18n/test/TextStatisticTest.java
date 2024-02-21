@@ -97,5 +97,4 @@ public class TextStatisticTest {
     private String getStringPath(String file) {
         return Path.of(file).toAbsolutePath().toString();
     }
-
 }

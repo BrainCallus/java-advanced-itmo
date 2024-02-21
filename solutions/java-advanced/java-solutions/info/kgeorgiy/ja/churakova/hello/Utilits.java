@@ -16,7 +16,6 @@ public class Utilits {
         return String.format("Given port %d is out of range: %s%n", port, message);
     }
 
-    // :NOTE:
     protected static String getUnreachablePortMessage(int port, String message) {
         return String.format("Port %d unreachable now: %s%n", port, message);
     }

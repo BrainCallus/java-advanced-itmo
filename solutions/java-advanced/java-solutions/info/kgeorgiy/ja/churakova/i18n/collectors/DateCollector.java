@@ -11,7 +11,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class DateCollector extends AbstractCollector<Date> {
-
     public DateCollector() {
         super();
     }
@@ -19,7 +18,6 @@ public class DateCollector extends AbstractCollector<Date> {
     public DateCollector(Locale locale) {
         super(locale);
     }
-
 
     @Override
     protected int compare(Date first, Date second) {
@@ -47,7 +45,7 @@ public class DateCollector extends AbstractCollector<Date> {
             try {
                 return Objects.requireNonNull(res);
             } catch (NullPointerException nul) {
-                //
+                // ignored
             }
         }
         return null;

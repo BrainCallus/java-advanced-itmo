@@ -156,7 +156,6 @@ public class Implementor implements JarImpler {
         }
     }
 
-
     /**
      * Writes class body
      * <p>
@@ -276,7 +275,6 @@ public class Implementor implements JarImpler {
         return getFullPath(token, path).resolve(getImplName(token) + "." + extension);
     }
 
-
     /**
      * Creates directories for given path
      *
@@ -291,7 +289,6 @@ public class Implementor implements JarImpler {
             } catch (IOException md) {
                 throw new ImplerException("Can not create directories for path " + path + "\n" + md.getMessage());
             }
-            // UnsupportedOperationException - not thrown <= none attributes
         }
     }
 
@@ -459,7 +456,6 @@ public class Implementor implements JarImpler {
         return !Modifier.isPrivate(value);
     }
 
-
     /**
      * Returns a string representing an implementation of instance of {@link Executable}(constructor or method)
      *
@@ -469,8 +465,9 @@ public class Implementor implements JarImpler {
      * @throws ImplerException if in @see {@link #getMethodParameters} {@link MalformedParametersException} occur
      */
     private <E extends Executable> String buildUnit(E unit) throws ImplerException {
-        return String.format("    %s %s%s%s {%n%s;%n }%n", getMethodModifs(unit),
-                buildUnitDeclaring(unit), getMethodParameters(unit, true), getMethodExceptions(unit),
+        return String.format("    %s %s%s%s {%n%s;%n }%n",
+                getMethodModifs(unit), buildUnitDeclaring(unit),
+                getMethodParameters(unit, true), getMethodExceptions(unit),
                 buildUnitBody(unit));
     }
 
@@ -489,9 +486,7 @@ public class Implementor implements JarImpler {
         if (unit instanceof Method) {
             return "    return ".concat(getDefaultValue(((Method) unit).getReturnType()));
         }
-        return "    super ".concat(
-                getMethodParameters(unit, false));
-
+        return "    super ".concat(getMethodParameters(unit, false));
     }
 
     /**
@@ -560,9 +555,6 @@ public class Implementor implements JarImpler {
         return parameter.getType().getCanonicalName() + " " + parameter.getName();
     }
 
-    // :NOTE: Возможно, не стоит создавать обертку над мтодом только для того, чтобы переопределить компаратор. Посмотрите в сторону мапы/сета с нужным вам компаратором
-    // fixed
-
     /**
      * Checks whether given arguments are correct.
      * <p>
@@ -604,8 +596,8 @@ public class Implementor implements JarImpler {
         if (!verifyArgs(args)) {
             return;
         }
-        Implementor implementor = new Implementor();
 
+        Implementor implementor = new Implementor();
         try {
             if (args.length == 2) {
                 implementor.implement(Class.forName(args[0]), Path.of(args[1]));
@@ -621,5 +613,4 @@ public class Implementor implements JarImpler {
             System.err.println("Not found class " + (args.length == 2 ? args[0] : args[1]) + SEPARATE + c.getMessage());
         }
     }
-
 }

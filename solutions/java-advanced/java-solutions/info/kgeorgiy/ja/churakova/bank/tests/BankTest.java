@@ -64,6 +64,7 @@ public class BankTest {
     /**
      * Tests single person creation and subsequent search in bank base
      */
+    @SuppressWarnings("unchecked")
     @Test
     public void test1_singlePerson() throws RemoteException {
         Person<MyRemote> person = (Person<MyRemote>) bank.getPersonByPassport("0", Localization.REMOTE);
@@ -79,14 +80,17 @@ public class BankTest {
      *
      * @throws RemoteException if occur in {@link Bank} operations
      */
+    @SuppressWarnings("unchecked")
     @Test
     public void test2_severalPersons() throws RemoteException {
         for (int i = 1; i < 5; i++) {
             bank.createPerson(Integer.toString(i * 10), "person" + i * 10, "Family" + i * 10);
         }
         for (int i = 1; i < 5; i++) {
-            final Person<MyRemote> expectNotNull = (Person<MyRemote>) bank.getPersonByPassport(Integer.toString(i * 10), Localization.REMOTE);
-            final Person<Local<RemotePersonAccount>> expectNotNullLoc = (Person<Local<RemotePersonAccount>>) bank.getPersonByPassport(Integer.toString(i * 10), Localization.LOCAL);
+            final Person<MyRemote> expectNotNull =
+                    (Person<MyRemote>) bank.getPersonByPassport(Integer.toString(i * 10), Localization.REMOTE);
+            final Person<Local<RemotePersonAccount>> expectNotNullLoc =
+                    (Person<Local<RemotePersonAccount>>) bank.getPersonByPassport(Integer.toString(i * 10), Localization.LOCAL);
             assertNotNull(expectNotNull, "person");
             assertNotNull(expectNotNullLoc, "person");
             Assert.assertEquals("Expected that local and remote persons are the same", expectNotNullLoc, expectNotNull);
@@ -94,7 +98,6 @@ public class BankTest {
             assertNull(expectNull, "person");
         }
     }
-
 
     /**
      * Tests operations with {@link RemotePersonAccount}
@@ -127,9 +130,11 @@ public class BankTest {
      *
      * @throws RemoteException if occur in {@link Bank} operations
      */
+    @SuppressWarnings("unchecked")
     @Test
     public void test4_localPerson() throws RemoteException {
-        final Person<Local<RemotePersonAccount>> personLoc = (Person<Local<RemotePersonAccount>>) bank.getPersonByPassport("10", Localization.LOCAL);
+        final Person<Local<RemotePersonAccount>> personLoc =
+                (Person<Local<RemotePersonAccount>>) bank.getPersonByPassport("10", Localization.LOCAL);
         assertNotNull(personLoc, "person");
         final Person<MyRemote> personRem = (Person<MyRemote>) bank.getPersonByPassport("10", Localization.REMOTE);
         personRem.getAccountById("101").setAmount(99);
@@ -147,7 +152,6 @@ public class BankTest {
         assertionForTest4("local", "101", 0, personLoc);
         assertionForTest4("remote", "100", 300, personRem);
         assertionForTest4("remote", "101", 99, personRem);
-
     }
 
     /**
@@ -161,17 +165,19 @@ public class BankTest {
     public void test5_multiThread() throws RemoteException {
         List<String> passports = List.of("1012", "227", "3", "99", "66666");
         List<String> accountIds = List.of("888", "9", "124");
-        List<Person<MyRemote>> clients = passports.stream().map(p ->
-        {
-            try {
-                return bank.createPerson(p, "name" + p, "family" + p);
-            } catch (RemoteException e) {
-                Assert.fail(e.getMessage());
-            }
-            return null;
-        }).toList();
+        List<Person<MyRemote>> clients = passports.stream().map(
+                p -> {
+                    try {
+                        return bank.createPerson(p, "name" + p, "family" + p);
+                    } catch (RemoteException e) {
+                        Assert.fail(e.getMessage());
+                    }
+                    return null;
+                }
+        ).toList();
         ExecutorService executors = Executors.newFixedThreadPool(10);
         Phaser phaser = new Phaser(1);
+
         for (var client : clients) {
             String prefix = client.getPassport() + ":";
             for (var id : accountIds) {
@@ -179,11 +185,13 @@ public class BankTest {
             }
         }
         phaser.arriveAndAwaitAdvance();
+
         for (var client : clients) {
             for (var id : accountIds) {
                 assertNotNull(client.getAccountById(id), "account");
             }
         }
+
         List<Integer> amounts = List.of(100, 500, 2000, 5000, 1000);
         int sum = amounts.stream().reduce(0, Integer::sum);
         for (var client : clients) {
@@ -196,6 +204,7 @@ public class BankTest {
             }
         }
         phaser.arriveAndAwaitAdvance();
+
         for (var client : clients) {
             for (var id : accountIds) {
                 assertAmount(client.getAccountById(id), sum);
@@ -203,7 +212,6 @@ public class BankTest {
         }
         executors.shutdown();
     }
-
 
     private void addAccountTask(String arg, ExecutorService executors, Phaser phaser) {
         executors.submit(() -> {
@@ -238,6 +246,4 @@ public class BankTest {
         Assert.assertEquals(String.format("For %s person on account %s %d expected", type, id, expected),
                 expected, person.getAccountById(id).getAmount());
     }
-
-
 }

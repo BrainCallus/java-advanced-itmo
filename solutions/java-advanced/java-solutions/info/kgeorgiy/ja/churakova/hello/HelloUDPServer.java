@@ -64,5 +64,4 @@ public class HelloUDPServer extends AbstractServer {
     public static void main(String[] args) {
         AbstractServer.init(new HelloUDPServer(), args);
     }
-
 }

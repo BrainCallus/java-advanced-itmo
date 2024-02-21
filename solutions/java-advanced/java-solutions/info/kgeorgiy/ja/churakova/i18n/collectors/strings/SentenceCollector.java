@@ -6,12 +6,11 @@ import java.text.BreakIterator;
 import java.util.Locale;
 
 public class SentenceCollector extends AbstractStringCollector {
-
-
     public SentenceCollector() {
         super();
     }
 
+    @SuppressWarnings("unused")
     public SentenceCollector(Locale locale) {
         super(locale);
     }
@@ -21,7 +20,6 @@ public class SentenceCollector extends AbstractStringCollector {
         iterator = BreakIterator.getSentenceInstance(locale);
         iterator.setText(text);
     }
-
 
     @Override
     protected String parse(String input, String cur_word, int pos) throws UnexpectedFormatException {

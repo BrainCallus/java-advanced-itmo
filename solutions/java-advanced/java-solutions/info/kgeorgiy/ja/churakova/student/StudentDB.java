@@ -42,8 +42,6 @@ public class StudentDB implements AdvancedQuery {
     }
 
     // GROUP_QUERY METHODS
-
-    // :NOTE: не нужно объявлять вперемешку методы с override, приватные и константы
     @Override
     public List<Group> getGroupsByName(Collection<Student> students) {
         return groupsBy(students, COMPARATOR_BY_NAME);
@@ -57,7 +55,6 @@ public class StudentDB implements AdvancedQuery {
     @Override
     public GroupName getLargestGroup(Collection<Student> students) {
         return getLargestGroup(students, List::size, GroupName::compareTo);
-        // :NOTE: подсказка Идеи, заменить на List::size
     }
 
     @Override
@@ -135,8 +132,6 @@ public class StudentDB implements AdvancedQuery {
                 BinaryOperator.minBy(String::compareTo)));
     }
 
-    // :NOTE: константы принято называть как-то вроде COMPARE_BY_NAME
-    // :NOTE: зачем оборачивать в Supplier, если в итоге всё равно везде пишется byName.get()?
     static private final Comparator<Student> COMPARATOR_BY_NAME = Comparator.comparing(Student::getLastName).
             thenComparing(Student::getFirstName).reversed().thenComparing(Student::compareTo);
 
@@ -187,6 +182,4 @@ public class StudentDB implements AdvancedQuery {
                         findStudents(students, Student::getId, id).findAny().orElse(null)).
                 map(attribute).collect(Collectors.toList());
     }
-
 }
-

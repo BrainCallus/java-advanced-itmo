@@ -74,7 +74,6 @@ public abstract class AbstractPerson<AccType> implements Person<AccType>, Serial
         return new HashSet<>(accounts.values());
     }
 
-
     /**
      * Add already existing account for this person
      *

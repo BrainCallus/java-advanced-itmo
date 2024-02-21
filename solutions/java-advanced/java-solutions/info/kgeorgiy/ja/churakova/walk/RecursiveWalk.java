@@ -10,17 +10,13 @@ import static info.kgeorgiy.ja.churakova.walk.Walk.*;
 
 public class RecursiveWalk {
     private static List<String> recursiveWalk(final Path path) {
-        final List<String> hashes = new ArrayList<>();  // :NOTE: OOM
-        if (Files.isDirectory(path)) { // :NOTE: useless
+        final List<String> hashes = new ArrayList<>();
+        if (Files.isDirectory(path)) {
             try (final DirectoryStream<Path> dirStream = Files.newDirectoryStream(path)) {
                 for (final Path entrails : dirStream) {
-                    // :NOTE: explicit recursion
-                    // :NOTE: square
                     hashes.addAll(recursiveWalk(entrails));
                 }
-                // :NOTE: more exceptions?
             } catch (final IOException | DirectoryIteratorException | SecurityException eRec) {
-                // :NOTE: copy-paste
                 return List.of(NULL_HASH + " " + path);
             }
             return hashes;
@@ -31,8 +27,6 @@ public class RecursiveWalk {
 
     private static void handleFileList(final String inputFileName, final String outputFileName) {
         try {
-            // :NOTE: encoding
-            // :NOTE: OOM
             final List<String> files = Files.readAllLines(Path.of(inputFileName), StandardCharsets.UTF_8);
             try {
                 final Path outPath = Path.of(outputFileName);

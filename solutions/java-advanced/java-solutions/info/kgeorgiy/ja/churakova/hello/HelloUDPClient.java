@@ -13,8 +13,6 @@ import static info.kgeorgiy.ja.churakova.hello.Utilits.*;
 
 
 public class HelloUDPClient extends AbstractClient implements HelloClient {
-
-
     /**
      * Default constructor;
      */
@@ -34,7 +32,6 @@ public class HelloUDPClient extends AbstractClient implements HelloClient {
         phaser.arriveAndAwaitAdvance();
         executors.shutdown();
     }
-
 
     private void clientExecutorTask(SocketAddress adress, Phaser phaser, String prefix, int requests, int cur_thread) {
         try (DatagramSocket datagramSocket = new DatagramSocket()) {
@@ -70,7 +67,6 @@ public class HelloUDPClient extends AbstractClient implements HelloClient {
             phaser.arriveAndDeregister();
         }
     }
-
 
     /**
      * An entry point runs Hello client with <host> <prefix> <port> <number of threads> <number of requests>

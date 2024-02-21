@@ -23,7 +23,6 @@ public class TextStatistics {
                 .filter(locale -> locale.getDisplayName().equals(loc)).findFirst().orElseThrow();
     }
 
-
     public static void main(String... args) {
         verifyArgs(args);
 
@@ -38,6 +37,5 @@ public class TextStatistics {
         } catch (NoSuchElementException ne) {
             System.err.printf("Can't get locale: %s%n", ne.getMessage());
         }
-
     }
 }

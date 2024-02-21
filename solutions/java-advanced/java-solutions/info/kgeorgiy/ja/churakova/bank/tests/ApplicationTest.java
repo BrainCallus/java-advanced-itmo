@@ -32,7 +32,6 @@ import static info.kgeorgiy.ja.churakova.bank.tests.Utilits.*;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ApplicationTest {
-
     private static Bank bank;
 
     /**
@@ -126,6 +125,7 @@ public class ApplicationTest {
      *
      * @throws RemoteException if occur in {@link Bank} operations
      */
+    @SuppressWarnings("unchecked")
     @Test
     public final void test5_decreaseAmount() throws RemoteException {
         for (int i = 1; i <= 3; i++) {
@@ -150,6 +150,7 @@ public class ApplicationTest {
      *
      * @throws RemoteException if occur in {@link Bank} operations
      */
+    @SuppressWarnings("unchecked")
     @Test
     public final void test6_topUpDebit() throws RemoteException {
         for (int i = 4; i <= 6; i++) {
@@ -175,9 +176,9 @@ public class ApplicationTest {
      * @throws MalformedURLException if occur in {@link BankApplicationImpl} constructor
      * @throws NotBoundException     if occur in {@link BankApplicationImpl} constructor
      */
+    @SuppressWarnings("unchecked")
     @Test
     public final void test7_applicationNoBank() throws RemoteException, MalformedURLException, NotBoundException {
-
         try {
             BankApplicationImpl bankApplication = new BankApplicationImpl();
             Field fBank = bankApplication.getClass().getDeclaredField("bank");
@@ -190,6 +191,7 @@ public class ApplicationTest {
                     invokeReflectMethod(bankApplication, "changeBalance", personParams, curAccount, (i + j) * 10000);
                     invokeReflectMethod(bankApplication, "debitAccount", personParams, curAccount, j * 10000);
                 }
+
                 Person<MyRemote> curPerson = (Person<MyRemote>) newBank.getPersonByPassport(personParams[2], Localization.REMOTE);
                 assertNotNull(curPerson, "person");
                 for (int j = 0; j < 5; j++) {
@@ -207,9 +209,7 @@ public class ApplicationTest {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             Assert.fail(e.getMessage());
         }
-
     }
-
 
     private void exceptionExpectedReflect(BankApplication application, String methodName, String[] personParams, String accountId, int delta) {
         try {
@@ -222,8 +222,8 @@ public class ApplicationTest {
 
     private void invokeReflectMethod(BankApplication application, String methodName, String[] personParams, String accountId, int delta) {
         try {
-            Method method = application.getClass().getDeclaredMethod(methodName,
-                    String.class, String.class, String.class, String.class, int.class);
+            Method method = application.getClass()
+                    .getDeclaredMethod(methodName, String.class, String.class, String.class, String.class, int.class);
             method.invoke(application, personParams[0], personParams[1], personParams[2], accountId, delta);
         } catch (NoSuchMethodException | IllegalAccessException e) {
             Assert.fail(e.getMessage());
@@ -233,9 +233,7 @@ public class ApplicationTest {
             } else {
                 Assert.fail(b.getMessage());
             }
-
         }
-
     }
 
     private void expectApplicationException(Person<MyRemote> person, int delta, String... args) throws RemoteException {
@@ -268,7 +266,8 @@ public class ApplicationTest {
         }
     }
 
-    private static void applicationMainReflectMethod(String methodName, Person<MyRemote> person, String accountId, int delta) throws RemoteException {
+    private static void applicationMainReflectMethod(String methodName, Person<MyRemote> person,
+                                                     String accountId, int delta) throws RemoteException {
         BankApplicationImpl.main(DEFAULT_HOST, person.getName(), person.getFamilyName(),
                 person.getPassport(), accountId, Integer.toString(delta), methodName);
     }
@@ -278,7 +277,8 @@ public class ApplicationTest {
                 accountId, Integer.toString(delta));
     }
 
-    private void applicationMainNoPerson(String name, String familyName, String passport, String accountId, int delta) throws RemoteException {
+    private void applicationMainNoPerson(String name, String familyName, String passport,
+                                         String accountId, int delta) throws RemoteException {
         BankApplicationImpl.main(DEFAULT_HOST, name, familyName, passport,
                 accountId, Integer.toString(delta));
     }
@@ -298,5 +298,4 @@ public class ApplicationTest {
             return false;
         }
     };
-
 }

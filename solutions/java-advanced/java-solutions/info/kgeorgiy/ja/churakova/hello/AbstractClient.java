@@ -10,8 +10,6 @@ import java.util.Objects;
 import static info.kgeorgiy.ja.churakova.hello.Utilits.*;
 
 public abstract class AbstractClient implements HelloClient {
-
-
     /**
      * Default constructor
      */

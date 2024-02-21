@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 public class WebCrawler implements Crawler {
-
     private final Downloader downloader;
     private final ExecutorService downloaders;
     private final ExecutorService extractors;
@@ -121,7 +120,6 @@ public class WebCrawler implements Crawler {
     }
 
     private record Link(String link, AtomicInteger depth, HostHandler handler) {
-        // it seems like atomic depth should not affect
         public String getLink() {
             return link;
         }
@@ -144,7 +142,6 @@ public class WebCrawler implements Crawler {
         AtomicInteger onHost;
 
         public HostHandler() {
-            // in host queue can be added no more than in queue in bfs
             queue = new ConcurrentLinkedQueue<>();
             onHost = new AtomicInteger(0);
         }
@@ -200,5 +197,3 @@ public class WebCrawler implements Crawler {
         }
     }
 }
-
-

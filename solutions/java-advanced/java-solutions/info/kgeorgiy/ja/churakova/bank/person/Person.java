@@ -8,12 +8,13 @@ import java.util.Set;
 
 /**
  * Interface for person
+ *
  * @param <T> defines localization
  */
 public interface Person<T> extends AccountOperations {
-
     /**
      * Return string representing person's passport
+     *
      * @return person's passport
      * @throws RemoteException if occur
      */
@@ -21,6 +22,7 @@ public interface Person<T> extends AccountOperations {
 
     /**
      * Return string representing person's name
+     *
      * @return person's name
      * @throws RemoteException if occur
      */
@@ -28,6 +30,7 @@ public interface Person<T> extends AccountOperations {
 
     /**
      * Return string representing person's second name
+     *
      * @return person's second name
      * @throws RemoteException if occur
      */
@@ -35,9 +38,9 @@ public interface Person<T> extends AccountOperations {
 
     /**
      * Return all person's {@link PersonsAccount}s
+     *
      * @return person's accounts
      * @throws RemoteException if occur
      */
     Set<PersonsAccount<T>> getAccounts() throws RemoteException;
-
 }

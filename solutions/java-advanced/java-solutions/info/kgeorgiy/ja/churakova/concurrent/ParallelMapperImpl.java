@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.function.Function;
 
 public class ParallelMapperImpl implements ParallelMapper {
-
     private final List<Thread> threads;
     private final Deque<JobSlice<?>> queue;
 
@@ -45,7 +44,6 @@ public class ParallelMapperImpl implements ParallelMapper {
         }
         return checker.getResults(); //or throw exception
     }
-
 
     /**
      * Stops all threads. All unfinished mappings are left in undefined state.
@@ -85,7 +83,7 @@ public class ParallelMapperImpl implements ParallelMapper {
         Thread thread = new Thread(() -> {
             try {
                 while (!Thread.interrupted()) {
-                    launchJob(extractSubtask()); // :NOTE: RuntimeException
+                    launchJob(extractSubtask());
                 }
             } catch (InterruptedException ignored) {
             }
@@ -101,7 +99,6 @@ public class ParallelMapperImpl implements ParallelMapper {
             synchronized (slice.checker) {
                 slice.checker.errors.addSuppressed(e);
             }
-            // :NOTE: race
         }
         synchronized (slice.checker) {
             slice.checker.completed++;

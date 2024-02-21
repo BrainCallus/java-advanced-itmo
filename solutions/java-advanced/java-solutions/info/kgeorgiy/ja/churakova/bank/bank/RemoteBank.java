@@ -40,7 +40,6 @@ public class RemoteBank implements Bank {
      */
     @Override
     public Account createAccount(final String id) throws RemoteException {
-        //System.out.println("Creating account " + id);
         Account account;
         if (id.contains(":")) {
             account = createPersonAccount(id);
@@ -58,10 +57,8 @@ public class RemoteBank implements Bank {
      */
     @Override
     public synchronized Account getAccountById(final String id) {
-        //System.out.println("Retrieving account " + id);
         return accounts.get(id);
     }
-
 
     /**
      * Creates new person with given parameters

@@ -15,13 +15,10 @@ import java.util.concurrent.TimeUnit;
 import static info.kgeorgiy.ja.churakova.hello.Utilits.*;
 
 public abstract class AbstractServer implements HelloServer {
-
     /**
      * Default constructor
      */
-    public AbstractServer() {
-
-    }
+    public AbstractServer() {}
 
     protected ExecutorService executors;
     protected List<Closeable> closeableSources = new ArrayList<>();
@@ -59,7 +56,6 @@ public abstract class AbstractServer implements HelloServer {
                 executors.submit(() -> serveExecutorsTask(cur_thread));
             }
         }
-
     }
 
     protected abstract void serveExecutorsTask(int cur_thread);
@@ -100,5 +96,4 @@ public abstract class AbstractServer implements HelloServer {
     protected byte[] getResponseBytes(String response) {
         return ("Hello, " + response).getBytes(StandardCharsets.UTF_8);
     }
-
 }

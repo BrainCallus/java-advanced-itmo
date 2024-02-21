@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets;
 import static info.kgeorgiy.ja.churakova.hello.Utilits.*;
 
 public class HelloUDPNonblockingClient extends AbstractClient implements SupportConnect {
-
     /**
      * Default constructor
      */
@@ -101,7 +100,6 @@ public class HelloUDPNonblockingClient extends AbstractClient implements Support
 
         key.interestOps(SelectionKey.OP_WRITE);
     }
-
 
     /**
      * An entry point runs Hello client with <host> <prefix> <port> <number of threads> <number of requests>

@@ -17,14 +17,11 @@ public class Utilits {
         Assert.assertEquals(wrongAmountMessage(account.getId(), expected), expected, account.getAmount());
     }
 
-
     protected static void assertNotNull(Object object, String type) {
-        // object.getClass().getSimpleName() doesn't work if object is null
         Assert.assertNotNull(String.format("Not null %s expected%n", type), object);
     }
 
     protected static void assertNull(Object object, String type) {
         Assert.assertNull(String.format("Null %s expected%n", type), object);
     }
-
 }
