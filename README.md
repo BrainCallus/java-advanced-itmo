@@ -256,7 +256,7 @@ public interface ParallelMapper extends AutoCloseable {
 5. Не следует рассчитывать на то, что переданные компараторы, предикаты и функции работают быстро.
 6. При выполнении задания нельзя использовать _Concurrency Utilities_.
    
-### [IterativeParallelism(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent/IterativeParallelism.java)
+### [IterativeParallelism(advanced)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/concurrent/IterativeParallelism.java)
 
 
 ## Домашнее задание 6. Javadoc
@@ -313,7 +313,7 @@ public interface ParallelMapper extends AutoCloseable {
   * Применение лямбда-выражений и потоков.
   * Избавление от повторяющегося кода.
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/student/StudentDB.java)
+### [Решение(advanced)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/student/StudentDB.java)
 
 
 ## Домашнее задание 2. ArraySortedSet
@@ -325,7 +325,7 @@ public interface ParallelMapper extends AutoCloseable {
   * Применение стандартных коллекций.
   * Избавление от повторяющегося кода.
 
-### [Решение(hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/arrayset/ArraySet.java)
+### [Решение(advanced)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/arrayset/ArraySet.java)
 
 
 ## Домашнее задание 1. Обход файлов
@@ -394,4 +394,4 @@ public interface ParallelMapper extends AutoCloseable {
     * Проверяется исходный код задания.
     * Весь код должен находиться в пакете `info.kgeorgiy.ja.фамилия.walk`.
         
-### [Решение(easy+hard)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/walk)
+### [Решение(easy+advanced)](solutions/java-advanced/java-solutions/info/kgeorgiy/ja/churakova/walk)
